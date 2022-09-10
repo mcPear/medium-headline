@@ -1,6 +1,6 @@
 ---
 title: Medium Headline
-emoji: 🦀
+emoji: 👀
 colorFrom: green
 colorTo: red
 sdk: streamlit
