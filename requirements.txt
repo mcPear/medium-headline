@@ -1,0 +1,3 @@
+titlecase==2.4
+pyspellchecker==0.7.0
+nltk==3.7
