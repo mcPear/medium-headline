@@ -8,27 +8,35 @@ import itertools
 nltk.download("punkt")
 spell = SpellChecker()
 
-st.title("Medium Headline")
-st.caption("Medium headline guidelines articles turned into an interactive app")
+st.title("Medium Headline Guidelines")
+st.caption("Turned into an interactive app")
 
 
-st.header("Start with typing your headline idea")
-headline = st.text_input("", "7 Steps How To NOT Make an Oak Coffee Table")
+st.subheader("Start with typing your headline idea")
+headline = st.text_input(
+    "",
+    "7 Steps How To NOT Make an Oak Coffee Table",
+)
+
+st.markdown("---")
 
 # TODO
 # """
 # MVP
 # - keep merging guidelines
-# - fill help when possible, for types too, clean up
+# - clean up helps
+# - ask sources' authors for permission (or rephrase)
 # - ask Danni for help
 
-# Workshoping:
+# Workshopping:
 # - try to write a headline with that tool
 # - use columns or expander to organise that
+# - fill help when possible, for types too
 # - ask in Facebook/reddit group/privs Medium Wroters/bloggers for feedback!
 # - own domain (host on Streamlit)
 
 # Features:
+# - consider turning examplary headlines into links
 # - bloom few shot for high-level guidelines
 # - train paraphraser to specific types
 # - BERT for suprise metric
@@ -38,14 +46,14 @@ headline = st.text_input("", "7 Steps How To NOT Make an Oak Coffee Table")
 # """
 
 # 1 Substantial guidelines
-st.header("Substantial guidelines")
-st.subheader("Make sure your headline answers the ultimate questions:")
+st.subheader("Substantial guidelines")
+st.write("**Make sure your headline answers the ultimate questions:**")
 st.checkbox("What the story is about?")
 st.checkbox(
     "Why the story matters to a reader?"
-)  # TODO does examplary headlines really answer that?
+)  # TODO does examplary headlines really answer that? maybe in sub-headlines, I don't get it but looks important, read more
 
-st.subheader("Make sure the headline is:")
+st.write("**Make sure the headline is:**")
 
 ### interesting
 st.checkbox("focused on what is most interesting")
@@ -70,19 +78,19 @@ st.checkbox(  # TODO it's optional depending on the audience
     help="Avoid jargon, and think of what makes sense in casual conversation. Know the language that your audience is familiar with.",
 )
 st.checkbox(
-    "Deliver on your promises.",
+    "**Deliver on your promises**",
     help="You’re building a relationship with your readers. The headline sets the expectations, and the story must deliver on that.",
 )
 st.checkbox(
-    "Don’t ask a question unless you know the answer.",
+    "Don’t ask a question unless you know the answer",
     help="You’re building a relationship with your readers. The headline sets the expectations, and the story must deliver on that.",
 )
 st.checkbox(
-    "If you want to be poetic or clever in your headline, follow it up with a strong subheadline.",
+    "If you want to be poetic or clever in your headline, follow it up with a strong subheadline",
     help="You may want to be poetic, clever, or artistic in the title. The challenge with crafting a title this way is that it becomes opaque. It’s also much easier to write a bad title when striving for something poetic or clever than if you’re going for clarity. In most cases, the reader won’t click to find out more because they didn’t understand what the story was about in the first place.",
 )
 
-st.subheader("Guiding questions to consider:")
+st.write("**Guiding questions to consider:**")
 st.checkbox(
     "Make it clear. Could the headline be clearer?"
 )  # there is such type (is it rule along others or individual style)
@@ -110,22 +118,17 @@ st.checkbox(
     help="“Be aware of who is in the room writing the headline and what the limits of their perspective might be,” shares Rawls. Often biases will show up in the adjectives you use, so double-check the ones you use, and consider what they may unintentionally express.",
 )
 
-st.checkbox(
-    "The key to writing a tempting benefit-based headline is to be specific.",
-    help="“How to Wake Up Smiling: The 9 Decisions That Led To A Life I Love”\n“This 3-Minute Exercise Will Change the Way You Solve Problems”\n“How I Doubled My Writing Income Overnight By Focusing on One Skill”",
-)
-
-# 2 Editorial guidelines
-
-st.subheader("Avoid:")
-st.checkbox("all caps")  # implement warning?
+# 2 Editorial guidelines DONE
+st.subheader("Editorial Guidelines")
+st.checkbox("Use Title Case (NEVER ALL CAPS)")  # implement warning?
 # alpha_chars = [c for c in headline if c.isalpha()]
 # upper_chars = [c for c in alpha_chars if c.isupper()]
 # upper_ratio = upper_chars / alpha_chars
 # is_mostly_upper = upper_ratio > 0.8
 # TODO show is_mostly_upper
 
-st.checkbox("all typos")  # red -> green, Spacy
+st.checkbox("Fix typos")  # red -> green, Spacy
+# TODO try https://pypi.org/project/language-tool-python/
 # if headline:
 #     ll = [
 #         [word_tokenize(w), " "] for w in headline.split()
@@ -139,13 +142,20 @@ st.checkbox("all typos")  # red -> green, Spacy
 #     "Especially consider:"
 #     st.info(headline)
 
-st.checkbox("links")  # implement warning with regex
-"Easy on the gerunds (-ing words)." "People are 70% more likely to click on the nongerund headlines."  # TODO implement check
-"Don’t write a headline like you would a book title (avoid one-word or two-word headlines)."  # TODO implement check
+st.checkbox("Remove links")  # implement warning with regex
+st.checkbox(  # implement
+    "Avoid gerunds (-ing words)",
+    help="People are 70% more likely to click on the nongerund headlines",
+)
+st.checkbox(  # implement
+    "Avoid one-word or two-word headlines",
+    help="Don’t write a headline like you would a book title",
+)
 
-# 4 Proven Headline Types OK
+# 3 Proven Headline Types DONE
 
 st.subheader("Proven Headline Types")
+
 st.write("**Analysis**")
 st.markdown(
     """
@@ -170,6 +180,15 @@ st.markdown(
     """
 )
 
+st.write("**Assertive**")
+st.markdown(
+    """
+- Alaska's Swimsuit Scandal Unfairly Polices Young Girls' Bodies
+- Meghan Markle Defeated the British Monarchy
+- Can Your Fitbit Predict the Flu? -> Your Fitbit Might Be Able to Predict the Flu
+"""
+)
+
 st.write("**Descriptive teaser**")
 st.markdown(
     """
@@ -190,90 +209,11 @@ st.markdown(
     """
 )
 
-st.write("**Quote**")
-st.markdown("- Mom, Why Don’t You Have Any Black Friends?")
-
-st.write("**Coining terms**")
-st.markdown(
-    """
-- When Black Women Go From Office Pet to Office Threat
-- Nazi Hippies: When the New Age and Far Right Overlap
-"""
-)
-
-st.write("**Personal headlines**")
-st.markdown(
-    """
-- It's 2020, And I Had to Leave My Home Because of the KKK
-"""
-)
-
-st.write("**Validate readers’ feelings**")
-st.markdown(
-    """
-- In Defense of the Super Low-Key Workout
-"""
-)
-
 st.write("**Clear promises**")
 st.markdown(
     """
 - How to Talk To an Employee Obsessed With Promotion
 - An Embarassing Story Is a Secret Weapon to Work
-"""
-)
-
-st.write("**Effective use of “I”**")
-st.markdown(
-    """
-- How I Accidentally Wound Up Running an Outlaw Bigger Gang in Ohio
-"""
-)
-
-st.write('**Effective uses of "you"**')
-st.markdown(
-    """
-- You Might Be Using Your Hearing and You Don't Even Know It
-- How to Pitch a 4-Day Workweek to Your Boss
-"""
-)
-
-st.write("**Negative headlines**")
-st.write("Tip: Negative headlines often outperform positive ones")
-st.markdown(
-    """
-- Six Habits of Deeply Happy People -> Six Habits of Deeply Miserable People
-- 7 Things You Should Do in the Morning -> 7 Things You Should Never Do in the Morning
-- A Rarely Mentioned Relationship Virtue That Strengthens Couples -> A Rarely Mentioned Relationship Sin That Bulldozes Couples
-"""
-)
-
-st.write("**Offer unconventional wisdom.**")
-st.markdown(
-    """
-- Your Life Is Full of Porn. Stop Getting Yourself Off
-- How to Quietly Get People’s Attention in a Noisy World
-- Lessons from a Billionaire Who Can’t Focus on Anything for More than 4 Hours
-"""
-)
-
-st.write(
-    "**Controversial and divisive**"
-)  # TODO maybe remove, validate with other rules
-st.markdown(
-    """
-- You Will Destroy Yourself Financially If You Save
-- Pepsi’s $32 Billion Typo Caused Deadly Riots
-- 11 Things Socially Aware People Don’t Say
-"""
-)
-
-st.write("**Assertive**")
-st.markdown(
-    """
-- Can Your Fitbit Predict the Flu? -> Your Fitbit Might Be Able to Predict the Flu
-- Alaska's Swimsuit Scandal Unfairly Polices Young Girls' Bodies
-- Meghan Markle Defeated the British Monarchy
 """
 )
 
@@ -286,7 +226,28 @@ st.markdown(
 """
 )
 
-st.write("**Share practical life advice that puts Universities to shame**")
+st.write("**Benefit-based**")
+st.caption(
+    "Tip: The key to writing a tempting benefit-based headline is to be specific"
+)
+st.markdown(
+    """
+- How to Wake Up Smiling: The 9 Decisions That Led To A Life I Love
+- This 3-Minute Exercise Will Change the Way You Solve Problems
+- How I Doubled My Writing Income Overnight By Focusing on One Skill
+"""
+)
+
+st.write("**Unconventional wisdom**")
+st.markdown(
+    """
+- Your Life Is Full of Porn. Stop Getting Yourself Off
+- How to Quietly Get People’s Attention in a Noisy World
+- Lessons from a Billionaire Who Can’t Focus on Anything for More than 4 Hours
+"""
+)
+
+st.write("**Promising life advice**")
 st.markdown(
     """
 - A Behind the Scenes Look at My Writing Schedule That’s Helped Write 5000+ Articles
@@ -295,14 +256,61 @@ st.markdown(
 """
 )
 
+st.write("**Negative headlines**")
+st.caption("Tip: Negative headlines often outperform positive ones")
+st.markdown(
+    """
+- Six Habits of Deeply Happy People -> Six Habits of Deeply Miserable People
+- 7 Things You Should Do in the Morning -> 7 Things You Should Never Do in the Morning
+- A Rarely Mentioned Relationship Virtue That Strengthens Couples -> A Rarely Mentioned Relationship Sin That Bulldozes Couples
+"""
+)
+
+st.write("**Personal headlines**")
+st.markdown(
+    """
+- It's 2020, And I Had to Leave My Home Because of the KKK
+"""
+)
+
+st.write("**Quote**")
+st.markdown("- Mom, Why Don’t You Have Any Black Friends?")
+
+st.write("**Validate readers’ feelings**")
+st.markdown(
+    """
+- In Defense of the Super Low-Key Workout
+"""
+)
+
+st.write("**Coining terms**")
+st.markdown(
+    """
+- When Black Women Go From Office Pet to Office Threat
+- Nazi Hippies: When the New Age and Far Right Overlap
+"""
+)
+
+
+# st.write(
+#     "**Controversial and divisive**"
+# )  # TODO maybe remove, validate with other rules
+# st.markdown(
+#     """
+# - You Will Destroy Yourself Financially If You Save
+# - Pepsi’s $32 Billion Typo Caused Deadly Riots
+# - 11 Things Socially Aware People Don’t Say
+# """
+# )
+
 # 4 Actions DONE
 st.subheader("Actions:")
 st.checkbox(
-    "Share the headline with someone you trust and see what they think the story is about."
+    "Share the headline with someone you trust and see what they think the story is about"
 )
-st.checkbox("Give them a few options and tell them to make a choice.")
+st.checkbox("Give them a few options and tell them to make a choice")
 st.checkbox(
-    "When published, look at what people are saying when they share the article."
+    "When published, look at what people are saying when they share the article"
 )
 
 # 5 Sources DONE
@@ -311,11 +319,11 @@ st.markdown(
     """[”How to Write a Headline” by Medium Creators](https://medium.com/creators-hub/how-to-write-a-headline-a72ab3449150)"""
 )
 st.markdown(
-    """[”5 Majestic Headline Secrets from Medium’s Most Viral Writers” by Nick Waghorn](https://bettermarketing.pub/5-majestic-headline-secrets-from-mediums-most-viral-writers-506753732dc9)"""
+    """[”How to Write a Compelling Headline That Isn’t Clickbait” by Medium Creators](https://medium.com/creators-hub/how-to-write-a-compelling-headline-that-isnt-clickbait-7cb816cec438)"""
 )
 st.markdown(
     """[”23 Examples of Effective Headlines” by Nadia Rawls](https://medium.com/creators-hub/23-examples-of-effective-headlines-2e7f753476f1)"""
 )
 st.markdown(
-    """[”How to Write a Compelling Headline That Isn’t Clickbait” by Medium Creators](https://medium.com/creators-hub/how-to-write-a-compelling-headline-that-isnt-clickbait-7cb816cec438)"""
+    """[”5 Majestic Headline Secrets from Medium’s Most Viral Writers” by Nick Waghorn](https://bettermarketing.pub/5-majestic-headline-secrets-from-mediums-most-viral-writers-506753732dc9)"""
 )
