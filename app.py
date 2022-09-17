@@ -53,55 +53,39 @@ st.checkbox(
     "Why the story matters to a reader?"
 )  # TODO does examplary headlines really answer that? maybe in sub-headlines, I don't get it but looks important, read more
 
-st.write("**Make sure the headline is:**")
+st.write("**Moreover:**")
 
-### interesting
-st.checkbox("focused on what is most interesting")
-# Is it interesting? Make it interesting
 st.checkbox(
-    "Focus on what’s interesting.",
-    help="Be straightforward about why a reader should read the article. Don’t bury or hide this.",
+    "Focus on what is interesting",
+    help="Your headline doesn’t need to address everything that’s in your story. It just needs to focus on the most interesting part of your story in a way that represents the overall truth of your story.",
 )
-# Focus on what’s interesting. Your headline doesn’t need to address everything that’s in your story.
-# It just needs to focus on the most interesting part of your story in a way that represents the overall truth of your story.
-### interesting
 
-st.checkbox(  # (trait or individual style?)
-    "Direct",
+st.checkbox(
+    "Make it direct and clear",
     help="Your story is among many a reader is browsing. Be straightforward in what it is about.",
 )
-"How To Become Popular Without Being Charming, Funny, or Outgoing"
-"How Google Earth Mapped 98% of the World"
 
-st.checkbox(  # TODO it's optional depending on the audience
-    "Uses conventional language (if for a general audience)",
-    help="Avoid jargon, and think of what makes sense in casual conversation. Know the language that your audience is familiar with.",
-)
 st.checkbox(
-    "**Deliver on your promises**",
+    "Deliver on your promises",
     help="You’re building a relationship with your readers. The headline sets the expectations, and the story must deliver on that.",
 )
+
 st.checkbox(
     "Don’t ask a question unless you know the answer",
-    help="You’re building a relationship with your readers. The headline sets the expectations, and the story must deliver on that.",
+    help="Same as above",
 )
+
+st.checkbox(
+    "Use conventional language (if you write for a general audience)",
+    help="Avoid jargon, and think of what makes sense in casual conversation. Know the language that your audience is familiar with.",
+)
+
 st.checkbox(
     "If you want to be poetic or clever in your headline, follow it up with a strong subheadline",
     help="You may want to be poetic, clever, or artistic in the title. The challenge with crafting a title this way is that it becomes opaque. It’s also much easier to write a bad title when striving for something poetic or clever than if you’re going for clarity. In most cases, the reader won’t click to find out more because they didn’t understand what the story was about in the first place.",
 )
 
-st.write("**Guiding questions to consider:**")
-st.checkbox(
-    "Make it clear. Could the headline be clearer?"
-)  # there is such type (is it rule along others or individual style)
-st.checkbox("Is the headline specific enough?")
-st.checkbox("Does the tone reflect the voice or point of view of the article?")
-st.checkbox("How might the headline convey what is unique about the story?")
-st.checkbox(
-    "Is it true? Make it true. Don't overpromise. Is the headline honest about what the story offers the reader?"
-)
-
-# TODO most of them below are extras/obvious
+st.write("**Avoid:**")
 st.checkbox("profanity")
 st.checkbox("exaggeration")
 st.checkbox("mystery")
